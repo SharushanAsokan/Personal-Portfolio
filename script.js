@@ -155,10 +155,9 @@ const themeIconMobile = document.getElementById('theme-icon-mobile');
 
 function setTheme(isLight) {
   document.body.classList.toggle('light', isLight);
-  const iconClass = isLight ? 'fa-moon' : 'fa-sun';
-  const removeClass = isLight ? 'fa-sun' : 'fa-moon';
-  themeIcon.classList.replace(removeClass, iconClass);
-  themeIconMobile.classList.replace(removeClass, iconClass);
+  const icon = isLight ? './Icons/dark_mode_icon.svg' : './Icons/light_mode_icon.svg';
+  themeIcon.src = icon;
+  themeIconMobile.src = icon;
   localStorage.setItem('theme', isLight ? 'light' : 'dark');
 }
 
