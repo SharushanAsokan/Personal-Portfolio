@@ -180,12 +180,18 @@ const sendBtn = document.getElementById("sendBtn");
 const chatbox = document.getElementById("chatbox");
 const userInput = document.getElementById("userInput");
 
-// Toggle chatbot
+chatbotWindow.style.display = "none"; 
+
+// Toggle chatbot — use display style, not 'hidden' class
+// 'hidden' conflicts with the inline flex needed for fixed sizing
 chatbotToggle.addEventListener("click", () => {
-  chatbotWindow.classList.toggle("hidden");
-  userInput.focus();
+  const isOpen = chatbotWindow.style.display === "flex";
+  chatbotWindow.style.display = isOpen ? "none" : "flex";
+  if (!isOpen) userInput.focus();
 });
-chatbotClose.addEventListener("click", () => chatbotWindow.classList.add("hidden"));
+chatbotClose.addEventListener("click", () => {
+  chatbotWindow.style.display = "none";
+});
 
 // Rule-based responses
 const responses = [
