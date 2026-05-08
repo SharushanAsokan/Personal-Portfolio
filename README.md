@@ -1,5 +1,7 @@
 # Sharushan Asokan — Personal Portfolio
 
+🌐 Live Site: https://sharushanasokan.github.io/Personal-Portfolio/
+
 A personal developer portfolio built with HTML, Tailwind CSS, and vanilla JavaScript. Includes sections for About, Skills, Projects, Services, and Contact — plus a light/dark theme toggle and a rule-based AI chatbot.
 
 ---
