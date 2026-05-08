@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────
+   Fade-in Animation
+   Used on elements that slide up when they enter the viewport
+   Triggered by JS adding the 'show' class via IntersectionObserver
+───────────────────────────────────────── */
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
@@ -11,6 +16,11 @@
   transform: translateY(0);
 }
 
+/* ─────────────────────────────────────────
+   Slide-in Animation (.todo)
+   Used on cards and project items
+   They slide in from the left when scrolled into view
+───────────────────────────────────────── */
 .todo {
   opacity: 0;
   translate: -50px 0;
@@ -22,6 +32,11 @@
   translate: 0 0;
 }
 
+/* ─────────────────────────────────────────
+   Scroll-triggered Scale Animation (.fadeUp)
+   Uses CSS scroll timeline — no JS needed
+   Elements scale up from small as they enter the viewport
+───────────────────────────────────────── */
 .fadeUp {
   animation: fadeUp both;
   animation-timeline: view();
@@ -39,6 +54,11 @@
   }
 }
 
+/* ─────────────────────────────────────────
+   Scroll-triggered Slide Animation (.autoShow)
+   Used on headings and section titles
+   They slide up from below as you scroll to them
+───────────────────────────────────────── */
 .autoShow {
   animation: text-appear both;
   animation-timeline: view();
@@ -56,10 +76,19 @@
   }
 }
 
+/* ─────────────────────────────────────────
+   CSS Variables
+   --primary is used for the button glow color
+───────────────────────────────────────── */
 :root {
   --primary: 250 66% 61%;
 }
 
+/* ─────────────────────────────────────────
+   Custom Button (.btn)
+   Used for Download CV and other CTA buttons
+   Has a mouse-tracking glow effect via JS + CSS variables
+───────────────────────────────────────── */
 .btn {
   all: unset;
   position: relative;
@@ -88,6 +117,7 @@
   transform: scale(1.03);
 }
 
+/* This is the radial glow that follows the mouse cursor inside the button */
 .btn .inner {
   position: absolute;
   inset: 0;
@@ -106,6 +136,7 @@
   opacity: 1;
 }
 
+/* Slightly smaller button on mobile */
 @media (max-width: 768px) {
   .btn {
     padding: 0.5rem 1rem;
@@ -114,167 +145,81 @@
   }
 }
 
-/* Light theme */
+/* ─────────────────────────────────────────
+   Light Mode Overrides
+   When the user switches to light mode, JS adds 'light' to <body>
+   All the overrides below kick in to flip colors
+───────────────────────────────────────── */
+
 body.light {
-  background-color: #f8f9ff;
+  background-color: #eef0f7 !important;
   color: #0f172a;
 }
 
+/* Navbar stays dark even in light mode so it's always readable */
 body.light nav {
   background: linear-gradient(to right, #1e1b4b, #2e1065, #1e1b4b);
   border-color: #4c1d95;
 }
 
+/* Section backgrounds */
+body.light #hero       { background-color: #eef0f7 !important; }
 body.light #about,
 body.light #projects,
-body.light #contact {
-  background-color: #f0f4ff;
-}
+body.light #contact    { background-color: #eef0f7 !important; }
+body.light #skills     { background-color: #e8ebf5 !important; }
+body.light #services   { background-color: #e2e6f0 !important; }
 
-body.light #skills {
-  background-color: #f8f9ff;
-}
-
-body.light #services {
-  background-color: #eef2ff;
-}
-
+/* Card backgrounds */
 body.light .bg-gray-800 {
   background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
   box-shadow: 0 2px 12px rgba(109, 40, 217, 0.08) !important;
 }
 
-body.light .bg-gray-900 {
-  background-color: #f0f4ff !important;
-}
+body.light .bg-gray-900  { background-color: #f0f4ff !important; }
+body.light .bg-gray-950  { background-color: #e8ecff !important; }
+body.light .bg-gray-900\/50 { background-color: rgba(15, 10, 40, 0.4) !important; }
 
-body.light .text-gray-300 {
-  color: #334155 !important;
-}
+/* Text colors */
+body.light .text-white   { color: #0f172a !important; }
+body.light .text-gray-300 { color: #1e293b !important; }
+body.light .text-gray-400 { color: #475569 !important; }
+body.light .text-gray-500 { color: #64748b !important; }
 
-body.light .text-gray-400 {
-  color: #475569 !important;
-}
+/* Borders */
+body.light .border-gray-700 { border-color: #c7d2fe !important; }
+body.light .border-gray-800 { border-color: #c7d2fe !important; }
 
-body.light .text-white {
-  color: #0f172a !important;
-}
-
-body.light .border-gray-700 {
-  border-color: #c7d2fe !important;
-}
-
-body.light .border-gray-800 {
-  border-color: #c7d2fe !important;
-}
-
-body.light .bg-gray-950 {
-  background-color: #e8ecff !important;
-}
-
+/* Footer stays dark like the navbar */
 body.light footer {
   background: linear-gradient(to right, #1e1b4b, #2e1065, #1e1b4b);
 }
 
-body.light .bg-gray-900\/50 {
-  background-color: rgba(15, 10, 40, 0.4) !important;
-}
-
-/* Nav links visible in light mode */
+/* Nav links are light so they're visible on the dark nav */
 body.light nav a,
-body.light nav ul li a {
-  color: #e2e8f0 !important;
-}
+body.light nav ul li a { color: #e2e8f0 !important; }
+body.light nav a:hover  { color: #a78bfa !important; }
 
-body.light nav a:hover {
-  color: #a78bfa !important;
-}
+/* Badge pills — "What I Offer", "Let's Connect" etc */
+body.light .text-purple-300       { color: #7c3aed !important; }
+body.light .bg-purple-900\/30     { background-color: rgba(237, 233, 254, 0.6) !important; }
+body.light .border-purple-700\/40 { border-color: rgba(124, 58, 237, 0.4) !important; }
 
-/* Badge pill text - "Let's Connect", "What I Offer" etc */
-body.light .text-purple-300 {
-  color: #7c3aed !important;
-}
+/* Contact section icon backgrounds */
+body.light .bg-purple-900\/40 { background-color: rgba(196, 181, 253, 0.3) !important; }
+body.light .text-purple-400   { color: #7c3aed !important; }
 
-body.light .bg-purple-900\/30 {
-  background-color: rgba(237, 233, 254, 0.6) !important;
-}
-
-body.light .border-purple-700\/40 {
-  border-color: rgba(124, 58, 237, 0.4) !important;
-}
-
-/* Services section text */
-body.light #services .text-gray-400 {
-  color: #4b5563 !important;
-}
-
+/* Services text */
+body.light #services .text-gray-400 { color: #4b5563 !important; }
 body.light #services h2,
-body.light #services h3 {
-  color: #0f172a !important;
-}
+body.light #services h3             { color: #0f172a !important; }
 
-/* Contact section */
-body.light #contact .text-gray-400 {
-  color: #4b5563 !important;
-}
-
-/* Softer background */
-body.light {
-  background-color: #eef0f7 !important;
-}
-
-body.light #about,
-body.light #projects,
-body.light #contact {
-  background-color: #eef0f7 !important;
-}
-
-body.light #skills {
-  background-color: #e8ebf5 !important;
-}
-
-body.light #services {
-  background-color: #e2e6f0 !important;
-}
-
-body.light #hero {
-  background-color: #eef0f7 !important;
-}
+/* Contact text */
+body.light #contact .text-gray-400 { color: #4b5563 !important; }
 
 /* Project card headings */
-body.light .todo h3 {
-  color: #0f172a !important;
-}
-
-/* Contact info icons background */
-body.light .bg-purple-900\/40 {
-  background-color: rgba(196, 181, 253, 0.3) !important;
-}
-
-body.light .border-purple-700\/40 {
-  border-color: rgba(109, 40, 217, 0.35) !important;
-}
-
-/* Contact info icons color */
-body.light .text-purple-400 {
-  color: #7c3aed !important;
-}
-
-/* Contact info text - email, location, uni */
-body.light .text-gray-300 {
-  color: #1e293b !important;
-}
-
-/* Smaller muted text */
-body.light .text-gray-400 {
-  color: #475569 !important;
-}
-
-/* Card borders */
-body.light .border-gray-700 {
-  border-color: #c7d2fe !important;
-}
+body.light .todo h3 { color: #0f172a !important; }
 
 /* Form inputs */
 body.light input,
@@ -285,16 +230,9 @@ body.light textarea {
 }
 
 body.light input::placeholder,
-body.light textarea::placeholder {
-  color: #94a3b8 !important;
-}
+body.light textarea::placeholder { color: #94a3b8 !important; }
 
-/* Form labels */
-body.light .text-gray-500 {
-  color: #64748b !important;
-}
-
-/* Theme toggle icon visible in light mode */
+/* Theme toggle button */
 body.light #theme-toggle,
 body.light #theme-toggle-mobile {
   color: #e2e8f0 !important;
@@ -307,21 +245,11 @@ body.light #theme-toggle-mobile:hover {
   border-color: #a78bfa !important;
 }
 
-/* Footer text in light mode */
+/* Footer text and icons */
 body.light footer p,
-body.light footer span {
-  color: #e2e8f0 !important;
-}
-
-body.light footer .text-gray-400 {
-  color: #cbd5e1 !important;
-}
-
-body.light footer .text-gray-300 {
-  color: #f1f5f9 !important;
-}
-
-/* Footer icons */
+body.light footer span  { color: #e2e8f0 !important; }
+body.light footer .text-gray-400 { color: #cbd5e1 !important; }
+body.light footer .text-gray-300 { color: #f1f5f9 !important; }
 body.light footer a {
   color: #a78bfa !important;
   border-color: #6d28d9 !important;
@@ -331,9 +259,10 @@ body.light footer a:hover {
   border-color: #a78bfa !important;
 }
 
-/* ═══════════════════════════════════════
+/* ─────────────────────────────────────────
    Enhanced Navbar
-═══════════════════════════════════════ */
+   Glassmorphism style with a shimmer line at the top
+───────────────────────────────────────── */
 
 #main-nav {
   background: linear-gradient(135deg, rgba(10,8,30,0.92) 0%, rgba(45,15,90,0.88) 50%, rgba(10,8,30,0.92) 100%);
@@ -343,6 +272,7 @@ body.light footer a:hover {
   box-shadow: 0 4px 32px rgba(109,40,217,0.15), 0 1px 0 rgba(139,92,246,0.1);
 }
 
+/* Animated shimmer line that runs across the very top of the navbar */
 #main-nav::before {
   content: '';
   position: absolute;
@@ -358,6 +288,7 @@ body.light footer a:hover {
   100% { background-position:  200% 0; }
 }
 
+/* Logo — purple gradient text in a serif font */
 .nav-logo {
   font-family: 'Georgia', serif;
   font-size: 1.3rem;
@@ -371,6 +302,7 @@ body.light footer a:hover {
   text-decoration: none;
 }
 
+/* Desktop nav links — small uppercase with an underline slide-in on hover */
 .nav-link {
   position: relative;
   font-size: 0.95rem;
@@ -383,6 +315,7 @@ body.light footer a:hover {
   transition: color 0.3s ease;
 }
 
+/* The underline — starts at width 0 and expands to 100% on hover */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -393,14 +326,10 @@ body.light footer a:hover {
   transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-link:hover {
-  color: #c4b5fd;
-}
+.nav-link:hover { color: #c4b5fd; }
+.nav-link:hover::after { width: 100%; }
 
-.nav-link:hover::after {
-  width: 100%;
-}
-
+/* Small dot separators between nav links */
 .nav-dot {
   width: 3px;
   height: 3px;
@@ -410,12 +339,18 @@ body.light footer a:hover {
   align-self: center;
 }
 
+/* ─────────────────────────────────────────
+   Mobile Menu
+   Dark blurred dropdown that opens from the navbar
+───────────────────────────────────────── */
+
 #mobile-menu {
   background: linear-gradient(180deg, rgba(15,10,40,0.97) 0%, rgba(30,15,60,0.97) 100%);
   border-top: 1px solid rgba(139, 92, 246, 0.2);
   backdrop-filter: blur(20px);
 }
 
+/* Mobile links — numbered (01, 02...) with a left slide on hover */
 .mobile-nav-link {
   display: flex;
   align-items: center;
@@ -433,14 +368,21 @@ body.light footer a:hover {
 
 .mobile-nav-link:hover {
   color: #c4b5fd;
-  padding-left: 6px;
+  padding-left: 6px; /* subtle slide right on hover */
 }
 
+/* The small number prefix before each link (01, 02 etc.) */
 .mobile-nav-link .link-num {
   font-size: 0.65rem;
   color: rgba(139, 92, 246, 0.5);
   font-family: monospace;
 }
+
+/* ─────────────────────────────────────────
+   Chatbot Window
+   Fixed size so it never grows when replies are long
+   Scrolling happens inside the chatbox div instead
+───────────────────────────────────────── */
 
 #chatbot-window {
   width: 320px;
@@ -448,40 +390,9 @@ body.light footer a:hover {
   flex-direction: column;
 }
 
+/* Messages area scrolls inside the fixed window */
 #chatbox {
   flex: 1;
   overflow-y: auto;
-  min-height: 0;
-}
-
-#mobile-menu {
-  background: linear-gradient(180deg, rgba(15,10,40,0.97) 0%, rgba(30,15,60,0.97) 100%);
-  border-top: 1px solid rgba(139,92,246,0.2);
-  backdrop-filter: blur(20px);
-}
-
-.mobile-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(203,193,230,0.85);
-  text-decoration: none;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid rgba(139,92,246,0.08);
-  transition: color 0.3s, padding-left 0.3s;
-}
-
-.mobile-nav-link:hover {
-  color: #c4b5fd;
-  padding-left: 6px;
-}
-
-.mobile-nav-link .link-num {
-  font-size: 0.65rem;
-  color: rgba(139,92,246,0.5);
-  font-family: monospace;
+  min-height: 0; /* important — without this flex won't scroll properly */
 }
