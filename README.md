@@ -152,6 +152,24 @@ And update the Tailwind gradient classes in `index.html` (search for `from-purpl
 
 ---
 
+## 🎓 Resources & Credits
+
+These YouTube videos helped during development:
+
+- [Responsive Navbar](https://youtu.be/GffWWp-QYWc?si=TkfNqj5mnp0xwp5-)
+- [Scroll Animations](https://youtube.com/shorts/qNDdOmWNyoA?si=BICdfMZt7Lm9xdOg)
+- [Typing Effect](https://youtu.be/-O5Nlvh2c8s?si=PlwEVBF3gkk4CA5_)
+- [CSS Animations](https://youtube.com/shorts/qnvUyAi_By8?si=tV5eHlXpd7al1lDe)
+- [Tailwind CSS Guide](https://youtu.be/ezP4kbOvs_E?si=hMf2Aq4sd-plRX-S)
+- [Dark/Light Theme Toggle](https://youtu.be/16PncZlSNds?si=y9K2n08QFacMGxua)
+- [Theme Toggle (reference)](https://youtu.be/16PncZlSNds?si=hSVfWTs515VrsPGU)
+- [Mobile Menu](https://youtube.com/shorts/0dXyetSW-Ro?si=c999Ktl16JYYRMr6)
+- [EmailJS Setup](https://youtu.be/VcrwXjNHB0U?si=qHLVp9TgA28aHbka)
+- [Button Effects](https://youtu.be/U8smiWQ8Seg?si=mPxUXjqq0ZhDbAym)
+- [Layout & Design](https://youtu.be/OnWTTUfBLMo?si=XZ-GkRaBa1mJjHTZ)
+
+---
+
 ## 📝 License
 
 This project is personal and not open for redistribution. Feel free to use it as inspiration for your own portfolio.
